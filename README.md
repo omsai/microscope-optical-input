@@ -48,16 +48,20 @@ Average Energy: 4.5 J/mm^2 over Drawn Area
 
 Usage
 -----
-These variables need to be hand edited in the Python script:
+These sets of variables need to be hand edited in the Python script:
+
+Measurements:
 *  `Ps` power source - measurement of the optical input laser beam at the microscope nose piece without the objective
-*  `To` percent transmission of laser wavelength by objective
 *  `Wo_FWHM` optical input laser beam size measured at specimen plane using uniform fluorescent ehidium bromide slide
-*  `camera_pixel`
-*  `mag_camera_tube_lens`
+
+Experimental parameters:
 *  `mag_objective`
 *  `w` ROI pixel width
 *  `h` ROI pixel height
-
-These variables yield the corresponding energy density:
 *  `dwell_time` laser beam parameter
 *  `repeats` laser beam parameter
+
+Optical Specifications:
+*  `To` percent transmission of laser wavelength by objective
+*  `camera_pixel`
+*  `mag_camera_tube_lens`
