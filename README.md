@@ -52,7 +52,7 @@ These sets of variables need to be hand edited in the Python script:
 
 Measurements:
 *  `Ps` power source - measurement of the optical input laser beam at the microscope nose piece without the objective
-*  `Wo_FWHM` optical input laser beam size measured at specimen plane using uniform fluorescent ehidium bromide slide
+*  `Wo_FWHM` optical input laser beam size measured at specimen plane using a uniform fluorescent ethidium bromide slide
 
 Experimental parameters:
 *  `mag_objective`
