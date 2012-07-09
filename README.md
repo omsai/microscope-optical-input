@@ -14,7 +14,7 @@ Example Output
  alt="Output Figure" title="Laser beam profiles" />
 ```
 >>> 
-Running script: 'C:\Documents and Settings\p.nanda\Desktop\WUSTL\raster_energy_roi.py'
+Running script: u'C:\Documents and Settings\p.nanda\My Documents\GitHub\microscope-optical-input\raster.py'
 Laser Beam at Back Focal Plane-
 Measured Power:   5 uW
 
@@ -50,11 +50,11 @@ Usage
 -----
 These variables need to be hand edited in the Python script:
 *  `Ps` power source - measurement of the optical input laser beam at the microscope nose piece without the objective
-*  `M` objective magnification
 *  `To` percent transmission of laser wavelength by objective
 *  `Wo_FWHM` optical input laser beam size measured at specimen plane using uniform fluorescent ehidium bromide slide
 *  `camera_pixel`
 *  `mag_camera_tube_lens`
+*  `mag_objective`
 *  `w` ROI pixel width
 *  `h` ROI pixel height
 

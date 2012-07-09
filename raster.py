@@ -5,8 +5,8 @@ Laser beam symbols used are from the beam power formula:
 [1] en.wikipedia.org/wiki/Gaussian_beam#Power_through_an_aperture
 
 References:
-[2] leica-microsystems.com/products/light-microscopes/accessories/objectives/
-[3] radiantzemax.com/kb-en/Goto50125.aspx
+[2] radiantzemax.com/kb-en/Goto50125.aspx
+[3] leica-microsystems.com/products/light-microscopes/accessories/objectives/
 [4] en.wikipedia.org/wiki/Beam_diameter#D4.CF.83_or_second_moment_width
 [5] en.wikipedia.org/wiki/Normal_distribution
 
@@ -25,7 +25,6 @@ import iqtools.mplot # must import this before pylab
 from pylab import Figure, axes
 from matplotlib.transforms import Bbox
 
-ENABLE_MAG_SCALAR = False
 
 ## Create the round laser beam profile at the specimen plane
 
@@ -33,24 +32,23 @@ ENABLE_MAG_SCALAR = False
 # Measured by user's PD-300 laser meter using single pixel FRAP
 Ps = 5
 
-M = 63 # Objective Magnification of Leica 63x 1.4NA PlanApo 11506192 [2]
 To = 0.84 # Percent transmission through above objective at 445nm 
 Tm = 0.8 # Percent transmission through media, etc (estimated)
 # Gaussian laser beam power (micro-Watts), Symbol: Po
 Po = Ps * To * Tm
-if ENABLE_MAG_SCALAR: Po *= M**2
 
 # FWHM Beam diameter / waist size (microns) at objective, Symbol: Wo
 # Measured at objective specimen plane using FRAPPA slide
 Wo_FWHM = 0.8
 
-# Convert FWHM to 1/e^2 [3]
+# Convert FWHM to 1/e^2 [2]
 Wo = Wo_FWHM * 0.8493218 * 2
 
 camera_pixel = 16 # (microns) e2v CCD97 pixel
 mag_camera_tube_lens = 1.2
+mag_objective = 63 # Objective Magnification of Leica 63x 1.4NA PlanApo 11506192 [3]
 # Pixel calibration (microns / pixel)
-cal = camera_pixel / float(M * mag_camera_tube_lens)
+cal = camera_pixel / float(mag_objective * mag_camera_tube_lens)
 
 # Beam axis pixel length on camera (pixels), Symbol: px_len
 # Wo for a single mode beam is 4 sigma wide [4]
@@ -185,10 +183,6 @@ roi_plot = fig.add_subplot(
 )
 axes_image = roi_plot.imshow(roi,
                              extent=[-w_um, x_um, -h_um, y_um],
-                             clip_on=True,
-                             clip_box=Bbox(
-                                array([[-1*int(w_um), int(x_um)],
-                                       [-1*int(h_um), int(y_um)]])),
                              interpolation='nearest')
 fig.colorbar(axes_image)
 roi_plot.plot([0,0,w_um,w_um,0], [0,h_um,h_um,0,0],'b-', label='ROI', linewidth=2)
