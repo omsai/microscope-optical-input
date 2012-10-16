@@ -20,7 +20,7 @@ Nanda, P. (Andor Technology)
 """
 
 from math import pi, e
-from numpy import sqrt, ogrid, hypot, zeros, array
+from numpy import sqrt, ogrid, hypot, zeros, array, linspace
 import iqtools.mplot # must import this before pylab
 from pylab import Figure, axes
 from matplotlib.transforms import Bbox
@@ -85,8 +85,8 @@ beam_profile *= Po
 
 ## Setup ROI
 
-w = 10 # pixels
-h = 10 # pixels
+w = 14 # pixels
+h = 14 # pixels
 length = x.shape[0]  # length in pixels of beam_profile square
 x = w + length - length % 2
 y = h + length - length % 2
@@ -101,9 +101,9 @@ row = zeros((x,length))
 # bad practise.  It would be better to accomplish this mathematically with:
 # 1.  Convolution, or
 # 2.  Cross multiplication in Fourier space
-for i in range(w):
+for i in range(w+1):
     row[i:length+i,0:length] += beam_profile
-for i in range(h):
+for i in range(h+1):
     roi[0:y,i:length+i] += row
 
 ## Show results
@@ -182,10 +182,12 @@ roi_plot = fig.add_subplot(
     ylabel='microns',
 )
 axes_image = roi_plot.imshow(roi,
-                             extent=[-w_um, x_um, -h_um, y_um],
+                             extent=[-x_um, x_um, -y_um, y_um],
                              interpolation='nearest')
 fig.colorbar(axes_image)
-roi_plot.plot([0,0,w_um,w_um,0], [0,h_um,h_um,0,0],'b-', label='ROI', linewidth=2)
+r_x = array([-w_um/2, +w_um/2, +w_um/2, -w_um/2, -w_um/2])
+r_y = array([-h_um/2, -h_um/2, +h_um/2, +h_um/2, -h_um/2])
+roi_plot.plot(r_x, r_y, 'b-', label='ROI', linewidth=2)
 #roi_plot.annotate('ROI', (0,0))
 roi_plot.legend()
 
@@ -197,3 +199,23 @@ print('Average Energy: ' +\
       '{0:3.1f} J/mm^2 over Drawn Area'.format(density_drawn_energy / 1e6))
 
 iqtools.mplot.showFigure(fig)
+
+line_fig = Figure()
+line_plot = line_fig.add_subplot(
+    111,
+    title='Center cross section of\nlaser spread at specimen plane\n',
+    xlabel='microns',
+    ylabel='micro-Watts',
+)
+center_line = roi[:, y/2]
+line_plot.plot(linspace(-x_um/2, x_um/2, center_line.shape[0]),
+               center_line, 'r-')
+# Draw ROI boundaries
+line_plot.axvline(x=-w_um/2, label='Limits of drawn ROI')
+line_plot.axvline(x=w_um/2)
+# Put the legend outside the ROI area.  See http://stackoverflow.com/q/4700614
+box = line_plot.get_position()
+line_plot.set_position([box.x0, box.y0 * 1.8,
+                        box.width, box.height * 0.85])
+line_plot.legend(loc='lower center', bbox_to_anchor=(0.5, -0.25))
+iqtools.mplot.showFigure(line_fig)
