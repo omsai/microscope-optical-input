@@ -30,20 +30,15 @@ Size: 10 x 10 pixels, covering 3 standard deviations
 <Plotting power of beam profile>
 
 Region of Interest-
-Drawn Size: 10 x 10 pixels or 2.12 x 2.12 um
-Drawn Area: 4.48 um^2
+Drawn Size: 14 x 14 pixels or 2.96 x 2.96 um
+Drawn Area: 8.78 um^2
 ...but due to edge spill over from laser raster scan...
-Actual Size: 20 x 20 pixels or 4.23 x 4.23 um, to 3 standard deviations
-Actual Area: 17.92 um^2, to 3 standard deviations
+Actual Size: 24 x 24 pixels or 5.08 x 5.08 um, to 3 standard deviations
+Actual Area: 25.80 um^2, to 3 standard deviations
 
 Power at Objective Specimen Plane-
-Average Energy: 56.8 W/mm^2 over Drawn Area
+Average Power: 61.8 W/mm^2 over Drawn Area
 <Plotting power around ROI>
-
-Energy at Objective Specimen Plane-
-Dwell time: 80 us
-Repeats: 1
-Average Energy: 4.5 J/mm^2 over Drawn Area
 >>> 
 ```
 
