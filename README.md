@@ -12,6 +12,8 @@ Example Output
 --------------
 <img src="https://github.com/downloads/omsai/microscope-optical-input/figure.png"
  alt="Output Figure" title="Laser beam profiles" />
+<img src="https://github.com/downloads/omsai/microscope-optical-input/line_figure.png"
+ alt="Output Line Figure" title="Center cross section of optical input" />
 ```
 >>> 
 Running script: u'C:\Documents and Settings\p.nanda\My Documents\GitHub\microscope-optical-input\raster.py'
