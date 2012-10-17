@@ -37,8 +37,17 @@ Actual Size: 24 x 24 pixels or 5.08 x 5.08 um, to 3 standard deviations
 Actual Area: 25.80 um^2, to 3 standard deviations
 
 Power at Objective Specimen Plane-
-Average Power: 61.8 W/mm^2 over Drawn Area
+Average Power: 66.7 W/mm^2 over Drawn Area
 <Plotting power around ROI>
+
+Energy at Objective Specimen Plane-
+Dwell time: 80 us
+Repeats: 1
+Average Energy: 5.3 J/mm^2 over Drawn Area
+
+<Plotting center cross section across ROI>
+
+<Saving power around ROI to file>
 >>> 
 ```
 

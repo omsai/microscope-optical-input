@@ -200,6 +200,8 @@ print('Average Energy: ' +\
 
 iqtools.mplot.showFigure(fig)
 
+print('')
+print('<Plotting center cross section across ROI>')
 line_fig = Figure()
 line_plot = line_fig.add_subplot(
     111,
@@ -219,3 +221,10 @@ line_plot.set_position([box.x0, box.y0 * 1.8,
                         box.width, box.height * 0.85])
 line_plot.legend(loc='lower center', bbox_to_anchor=(0.5, -0.25))
 iqtools.mplot.showFigure(line_fig)
+
+print('')
+print('<Saving power around ROI to file>')
+import Image
+im = Image.fromarray(roi)
+im.save('laser_power_around_{0}x{0}px_roi_in_microwatts'.format(w,h) + 
+        '(calib_{0:1.3f}um_per_px).tif'.format(cal))
