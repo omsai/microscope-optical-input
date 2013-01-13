@@ -5,7 +5,7 @@ The standard performance measurement of illuminating a specimen on a microscope 
 
 ![equation](http://latex.codecogs.com/gif.latex?P_%7Bdensity%7D%3D%5Cfrac%7BP_%7Bobjective%7D%7D%7BArea%7D)
 
-However, with small laser scanned regions, the laser Gaussian beam shape creates edge artifacts or delivers lower power in a circular distribution.  This script was written for this possibility.  Below is the output for laser illuminating a 10 x 10 pixel region of interest (ROI)
+However, with small laser scanned regions, the laser Gaussian beam shape creates edge artifacts or delivers lower power in a circular distribution.  This script was written for this possibility.  Below is the output for laser illuminating a 14 x 14 pixel region of interest (ROI)
 
 
 Example Output
